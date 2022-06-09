@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <br><div align="center"> <h1>Welcome to Library</h1></div>
+    <p align="right" style="font-size: 20"><u>
+        <a href="http://127.0.0.1:8000/lab_manage_app/login/">Logout</a>
+    </u></p>
+</head>
+<body>
+        {% if message %}
+                <center><p style="font-size: large">{{ message }}</p></center>
+        {% endif %}
+            <div class="text-right text-sm-start mt-4 pt-2">
+                <form name = "addbook_form" action = "/lab_manage_app/add_book/" method = "GET" >
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary btn-sm"
+                    style="padding-left: 5rem; padding-right: 5rem; ">+ Add Book</button>
+                </form>
+            </div>
+<br>
+
+<div class="container-xxl">
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th style="background-color: dimgray;color: white">Title</th>
+        <th style="background-color: dimgray;color: white">ISBN</th>
+        <th style="background-color: dimgray;color: white">Author</th>
+        <th style="background-color: dimgray;color: white">Publication</th>
+        <th style="background-color: dimgray;color: white">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td><a href="http://127.0.0.1:8000/lab_manage_app/viewbooks/{{ book.book_id }}/">{{ book.isbn }}</a></td>
+                <td>{{ book.author_name }}</td>
+                <td>{{ book.publication }}</td>
+                <td>&ensp;{{ book.price }}</td>
+            </tr>
+         {% endfor %}
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

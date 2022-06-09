@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+     <form name = "form" action = "/lab_manage_app/delete_book/" method = "POST" >
+          {% csrf_token %}
+         <input type = "text"  placeholder = "Book name" name = "book_name" /><br>
+         <button type = "submit" value = "Delete" >
+            <strong>Delete</strong>
+          </button>
+      </form>
+</body>
+</html>

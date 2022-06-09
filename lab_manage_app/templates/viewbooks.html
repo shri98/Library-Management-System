@@ -1,0 +1,115 @@
+
+
+<html>
+<head>
+    <!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:400,500,600,800&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.css"
+  rel="stylesheet"
+/>
+    <!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.js"
+></script>
+</head>
+<style>
+.button {
+  border: none;
+  background-color: inherit;
+  padding: 7px 3px;
+  font-size: 18px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.info {
+  color: dodgerblue;
+}
+</style>
+   <body>
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-left align-items-right h-200 w-150">
+      <div class="col-md-10 col-lg-10 col-xl-6 offset-l-1">
+        <form name = "updatebook_form" action = "/lab_manage_app/update_book/{{ book_id }}/" method = "POST" >
+
+        {% csrf_token %}
+          <div>
+              <label style="font-size: Medium; color: dimgray">Book Title: </label><br>
+            <input type = "text"  placeholder = "Maths" name = "title" value="{{ title }}" class="form-control form-control-lg"/>
+
+          </div>
+            <br>
+
+          <div>
+              <label style="font-size: Medium; color: dimgray">Total Pages: </label><br>
+            <input type = "text"  placeholder = "99" name = "total_pages" value="{{ total_pages }}" class="form-control form-control-lg"/>
+          </div>
+            <br>
+            <div>
+                <label style="font-size: Medium; color: dimgray">Rating: </label><br>
+            <input type="text"   placeholder = "value between 1-10"  value="{{ rating }}"  name = "rating" class="form-control form-control-lg"/>
+            </div>
+            <br>
+
+            <div>
+                <label style="font-size: Medium; color: dimgray">ISBN: </label><br>
+                <input type="text" name = "isbn" value="{{ isbn }}"  class="form-control form-control-lg"
+              placeholder="isbn" />
+            </div>
+
+            <br>
+
+            <div>
+                <label style="font-size: Medium; color: dimgray">Author Name: </label><br>
+
+                <input type = "text"  placeholder = "RD Sharma" value="{{ author_name }}" name = "author_name"  class="form-control form-control-lg"/>
+            </div>
+            <br>
+
+            <div>
+                <label style="font-size: Medium; color: dimgray">Publication: </label><br>
+
+                <input type = "text"  placeholder = "RD Sharma publication" value="{{ publication }}" name = "publication"  class="form-control form-control-lg"/>
+            </div>
+            <br>
+
+            <div>
+                <label style="font-size: Medium; color: dimgray">Price: </label><br>
+
+                <input type = "text"  placeholder = "1000" name = "price" value="{{ price }}" class="form-control form-control-lg"/>
+            </div>
+
+
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+              &ensp;&ensp;&ensp;&ensp;<button type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 5rem; padding-right: 5rem; ">Update Book</button>
+          </div>
+        </form>
+
+          <form name = "deletebook_form" action = "/lab_manage_app/delete_book/{{ book_id }}/" method = "POST" >
+                &ensp;&ensp;&ensp;&ensp;
+            {% csrf_token %}
+                <button type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 5rem; padding-right: 5rem; ">Delete Book</button>
+
+
+          </form>
+
+      </div>
+    </div>
+  </div>
+
+   </body>
+</html>
